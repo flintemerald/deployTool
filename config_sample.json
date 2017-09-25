@@ -1,0 +1,35 @@
+{
+  "headerMessage": "\ndeploy example\n",
+  "needConfirm": true,
+  "confirmWarning": "are you sure? (type yes): ",
+  
+  "serverList": [
+    {"host":"192.168.1.127:22", "user":"godev", "pswd":"d5f3daf93376"},
+    {"host":"192.168.1.148:22", "user":"godev", "pswd":"d5f3daf93376"}
+  ],
+  
+  "preDeployLocalCommands": [
+    {"cmd":"ls -l", "required":true},
+    {"cmd":"rm ./file_to_delete.txt"},
+    {"cmd":"echo kokoko"}
+  ],
+  "preDeployRemoteCommands": [
+    {"cmd":"echo azaza > test.txt", "required":true},
+    {"cmd":"rm -rf ./assets"}
+  ],
+  
+  "skipMaskList": ["*.py", "__pycache__"],
+  "deployPath":"./deployTest",
+  "deployItems": [
+    "./deploy.go",
+    "./assets"
+  ],
+  
+  "postDeployRemoteCommands": [
+    {"cmd":"rm ./test.txt"},
+    {"cmd":"rm ./test2.txt"}
+  ],
+  "postDeployLocalCommands": [
+    {"cmd":"echo kokoko"}
+  ]
+}
